@@ -112,6 +112,7 @@ function initProps (vm: Component, propsOptions: Object) {
 
 function initData (vm: Component) {
   let data = vm.$options.data
+  //初始化_data 组建中的data是一个函数，则调用getData返回结果
   data = vm._data = typeof data === 'function'
     ? getData(data, vm)
     : data || {}

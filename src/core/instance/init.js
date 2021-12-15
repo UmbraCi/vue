@@ -49,11 +49,15 @@ export function initMixin (Vue: Class<Component>) {
     }
     // expose real self
     vm._self = vm
+    //初始化跟生命周期相关的属性    $parent   $root     $children   $refs
     initLifecycle(vm)
+    //初始化当前组件的事件
     initEvents(vm)
     initRender(vm)
+    //触发生命周期函数
     callHook(vm, 'beforeCreate')
     initInjections(vm) // resolve injections before data/props
+    //初始化vm的_props  methods _data computed  watch
     initState(vm)
     initProvide(vm) // resolve provide after data/props
     callHook(vm, 'created')
@@ -64,7 +68,7 @@ export function initMixin (Vue: Class<Component>) {
       mark(endTag)
       measure(`vue ${vm._name} init`, startTag, endTag)
     }
-
+    //调用$mount挂载页面
     if (vm.$options.el) {
       vm.$mount(vm.$options.el)
     }

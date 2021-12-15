@@ -33,6 +33,7 @@ export function initExtend (Vue: GlobalAPI) {
     const Sub = function VueComponent (options) {
       this._init(options)
     }
+    //原型继承自Vue   Super=this=Vue
     Sub.prototype = Object.create(Super.prototype)
     Sub.prototype.constructor = Sub
     Sub.cid = cid++
@@ -76,6 +77,7 @@ export function initExtend (Vue: GlobalAPI) {
 
     // cache constructor
     cachedCtors[SuperId] = Sub
+    //返回组件的构造函数
     return Sub
   }
 }

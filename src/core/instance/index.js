@@ -13,11 +13,15 @@ function Vue (options) {
   }
   this._init(options)
 }
-
+//注册vm的 _init()方法，初始化  vm
 initMixin(Vue)
+//注册$data $props $watch $set $delete
 stateMixin(Vue)
+//注册 $on $once $off $emit
 eventsMixin(Vue)
+//注册 _update $forceUpdate $destroy
 lifecycleMixin(Vue)
+//注册 $nextTick    _render
 renderMixin(Vue)
 
 export default Vue

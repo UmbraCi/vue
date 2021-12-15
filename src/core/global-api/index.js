@@ -52,6 +52,7 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   }
 
   Vue.options = Object.create(null)
+  //['component','directive','filter']  加s
   ASSET_TYPES.forEach(type => {
     Vue.options[type + 's'] = Object.create(null)
   })
@@ -59,11 +60,14 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   // this is used to identify the "base" constructor to extend all plain-object
   // components with in Weex's multi-instance scenarios.
   Vue.options._base = Vue
-
+  //浅拷贝    注册keep-alive
   extend(Vue.options.components, builtInComponents)
-
+  //注册VUE.use
   initUse(Vue)
+  //注册Vue.Mixin</T>
   initMixin(Vue)
+  //注册Vue.extend()    基于传入的options返回一个组件的构造函数
   initExtend(Vue)
+  //注册Vue.'component','directive','filter' ()
   initAssetRegisters(Vue)
 }
